@@ -1953,124 +1953,93 @@ h1 {
     border-radius: 24px;
   }
 }
-/* xiaohongshu image + text layout */
+/* ==========================================================================
+   优化重构：小红书/商业实践与案例研究双栏完美齐平、垂直居中排版（含自适应响应式）
+   ========================================================================== */
 
-.case-study {
-  display: flex;
-  align-items: center;
-  gap: 48px;
-
+/* 1. 小红书图文专用双栏布局 - 确保桌面端完美对齐 */
+.xhs-image-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 1:1 比例对齐，左右等宽 */
+  align-items: center;            /* 垂直方向绝对齐平居中 */
+  gap: clamp(24px, 4vw, 48px);    /* 智能弹性间距 */
   width: 100%;
-
-  padding: 40px;
-
-  border-radius: 40px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,228,241,0.55),
-      rgba(217,238,255,0.55)
-    );
-
-  border: 1px solid rgba(255,255,255,0.72);
-
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,0.82),
-    0 18px 48px rgba(31,77,255,0.08);
-
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
+/* 2. 案例通用研究双栏容器 */
+.case-study {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 改为现代 Grid 布局代替 Flex，强制两端齐平 */
+  align-items: center;            /* 垂直方向绝对齐平居中 */
+  gap: clamp(24px, 4vw, 48px);    /* 智能自适应间距 */
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* 左侧图片与视觉展示区 */
 .case-image {
-  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 0;
 }
 
 .case-image img {
-  width: 100%;
   display: block;
-
-  border-radius: 28px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 24px;            /* 与整体毛玻璃容器圆角呼应 */
 }
 
+/* 右侧毛玻璃文字卡片区 */
 .case-text {
-  flex: 1;
-
-  min-width: 0;
-
-  padding: 36px;
-
-  border-radius: 30px;
-
-  background: rgba(255,255,255,0.36);
-
-  border: 1px solid rgba(255,255,255,0.72);
-
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,0.82),
-    0 12px 32px rgba(31,77,255,0.06);
-
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  width: 100%;
+  padding: clamp(24px, 4vw, 40px);/* 响应式内边距，大屏更具呼吸感 */
+  border: 1px solid rgba(255, 255, 255, 0.72); /* 继承全局流体玻璃描边 */
+  border-radius: 28px;            /* 统一为系统的 28px 圆角 */
+  background: rgba(255, 255, 255, 0.5); /* 注入系统的 Liquid Glass 背景 */
+  box-shadow: 0 24px 70px rgba(31, 77, 255, 0.16), inset 0 1px 1px rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(26px) saturate(168%);
+  -webkit-backdrop-filter: blur(26px) saturate(168%);
 }
 
+/* 卡片内部排版规范 */
 .case-text ul {
+  list-style-type: disc;
+  padding-left: 20px;
   margin: 0;
-  padding-left: 28px;
-
-  display: block !important;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;                      /* 统一列表项的垂直间距 */
 }
 
 .case-text li {
-  margin-bottom: 26px;
-
-  color: #273142;
-
-  font-size: clamp(18px, 1.4vw, 24px);
-
-  line-height: 1.9;
-
-  white-space: normal;
-  word-break: normal;
+  font-size: clamp(15px, 1.2vw, 18px); /* 智能字号，防止 20px 在常规显示器上过大 */
+  line-height: 1.75;
+  color: #111827;                 /* 对应 --ink 全局色 */
+  text-align: left;               /* 强制统一左对齐，提高可读性 */
+  margin: 0;
 }
 
-.case-text li:last-child {
-  margin-bottom: 0;
-}
-
-/* mobile */
-
+/* 3. 平板与手机端的完美降级响应式体验 */
 @media (max-width: 980px) {
-
+  .xhs-image-text,
   .case-study {
-    flex-direction: column;
-
-    padding: 24px;
+    grid-template-columns: 1fr;   /* 小屏幕自动转为大单栏堆叠 */
+    gap: 32px;
   }
-
+  
+  .case-image {
+    max-width: 480px;             /* 限制移动端图片的显示范围，防止过大 */
+    margin: 0 auto;
+  }
+  
   .case-text {
-    width: 100%;
-    padding: 24px;
+    padding: 24px 20px;
   }
-
-}
-
-@media (max-width: 640px) {
-
-  .case-study {
-    gap: 20px;
-    padding: 18px;
-  }
-
-  .case-text {
-    padding: 20px;
-  }
-
-  .case-text li {
-    font-size: 16px;
-    line-height: 1.8;
-  }
-
 }
