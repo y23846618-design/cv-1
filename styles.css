@@ -1973,63 +1973,7 @@ h1 {
 
 .xhs-side-text li + li {
   margin-top: 10px;
-}
 
-@media (max-width: 760px) {
-  .xhs-image-text {
-    grid-template-columns: 1fr;
-  }
-}
-.case-study {
-  display: flex;
-  gap: 50px;
-  align-items: center;
-
-  padding: 40px;
-  border-radius: 40px;
-
-  background: linear-gradient(
-    90deg,
-    #f9edf5,
-    #eef8ff
-  );
-}
-
-.case-image {
-  flex: 1;
-}
-
-.case-image img {
-  width: 100%;
-  border-radius: 30px;
-  display: block;
-}
-
-.case-text {
-  flex: 1;
-
-  background: rgba(255,255,255,0.4);
-
-  border: 1px solid #f3b6d2;
-
-  border-radius: 30px;
-
-  padding: 40px;
-}
-
-.case-text ul {
-  margin: 0;
-  padding-left: 25px;
-}
-
-.case-text li {
-  margin-bottom: 32px;
-
-  font-size: 28px;
-
-  line-height: 1.8;
-
-  color: #333;
 }
 @media (max-width: 768px) {
 
