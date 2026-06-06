@@ -1,7 +1,6 @@
 const panelGroups = {
   home: [".hero", ".profile-band", ".skills"],
   practice: ["#practice"],
-  experience: ["#experience"],
   portfolio: ["#portfolio"],
   photography: ["#photography"],
   contact: ["#contact"],

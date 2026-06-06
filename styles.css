@@ -795,6 +795,33 @@ h3 {
   padding: 20px;
 }
 
+.portfolio-grid article > div:not(.portfolio-duo) p + p {
+  margin-top: 12px;
+}
+
+.portfolio-installations {
+  gap: 18px;
+}
+
+.portfolio-work {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.52);
+}
+
+.portfolio-work:last-child {
+  border-bottom: 0;
+}
+
+.portfolio-work-copy {
+  padding: 20px;
+}
+
+.portfolio-work-copy p + p {
+  margin-top: 12px;
+}
+
 .portfolio-duo {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -804,9 +831,54 @@ h3 {
   border-bottom: 1px solid var(--chrome-dark);
 }
 
+.portfolio-duo .gallery-item {
+  position: relative;
+}
+
+.image-tag,
+.work-subtitle {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.image-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+  padding: 4px 10px;
+  font-size: 11px;
+  line-height: 1.2;
+  box-shadow: 0 8px 18px rgba(31, 77, 255, 0.12);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+}
+
+.work-subtitle {
+  margin: 16px 0 8px;
+  padding: 5px 12px;
+  font-size: 13px;
+}
+
 .portfolio-duo .wide {
   grid-column: span 2;
   aspect-ratio: 16 / 9;
+}
+
+.portfolio-installations .portfolio-duo {
+  border-bottom: 0;
+}
+
+.portfolio-installations .portfolio-duo .gallery-item,
+.portfolio-installations .portfolio-duo .wide {
+  grid-column: auto;
+  aspect-ratio: 1 / 1;
 }
 
 .portfolio-duo img,
@@ -1542,6 +1614,17 @@ h1 {
   padding: 0 4px;
 }
 
+.gallery-intro {
+  max-width: 860px;
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.78);
+  color: #273142;
+}
+
 #practice .phone-gallery {
   min-height: 0;
   justify-content: flex-start;
@@ -2043,59 +2126,83 @@ h1 {
     padding: 24px 20px;
   }
 }
-.xhs-image-text {
-  display: grid;
-  grid-template-columns: minmax(280px, 58%) 1fr;
-  gap: 24px;
-  align-items: center;
-  margin-top: 18px;
-}
 
-.xhs-side-text {
-  margin: 0;
-  padding: 22px 24px 22px 42px;
-  border-radius: 24px;
-  background: rgba(255, 232, 245, 0.78);
-  border: 1px solid rgba(255, 139, 183, 0.42);
-  color: #3b3142;
-  line-height: 1.8;
-  font-size: 16px;
-}
+@media (max-width: 700px) {
+  body {
+    display: block;
+  }
 
-.xhs-side-text li + li {
-  margin-top: 10px;
-}
+  .site-header {
+    position: sticky;
+    top: 8px;
+    width: calc(100% - 24px);
+    height: auto;
+    min-height: 0;
+    margin: 8px 12px 0;
+    padding: 8px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border-radius: 24px;
+  }
 
-@media (max-width: 760px) {
-  .xhs-image-text {
+  .brand {
+    min-height: 36px;
+    flex: 0 0 auto;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .nav {
+    min-width: 0;
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .nav a {
+    min-height: 32px;
+    padding: 5px 9px;
+    font-size: 12px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  main,
+  .footer {
+    width: auto;
+    max-width: none;
+    margin: 12px;
+  }
+
+  .scrapbook-cover {
+    min-height: auto;
+  }
+
+  .notebook {
+    min-height: 0;
+  }
+
+  .notebook-rings {
+    min-height: 14px;
+  }
+
+  .notebook-rings span {
+    width: 28px;
+    height: 5px;
+  }
+
+  .profile-band,
+  .skill-grid,
+  .portfolio-grid,
+  .photo-series-list {
     grid-template-columns: 1fr;
   }
-}
-.xhs-image-text {
-  display: grid;
-  grid-template-columns: minmax(280px, 58%) 1fr;
-  gap: 24px;
-  align-items: center;
-  margin-top: 18px;
-}
 
-.xhs-side-text {
-  margin: 0;
-  padding: 22px 24px 22px 42px;
-  border-radius: 24px;
-  background: rgba(255, 232, 245, 0.78);
-  border: 1px solid rgba(255, 139, 183, 0.42);
-  color: #3b3142;
-  line-height: 1.8;
-  font-size: 16px;
-}
-
-.xhs-side-text li + li {
-  margin-top: 10px;
-}
-
-@media (max-width: 760px) {
-  .xhs-image-text {
+  .footer {
     grid-template-columns: 1fr;
   }
 }
