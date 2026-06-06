@@ -1959,5 +1959,32 @@ h1 {
   gap: 24px;
   align-items: center;
 }
+.case-study {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
 
+.case-image {
+  flex: 1;
+  min-width: 0;
+}
+
+.case-text {
+  flex: 1;
+  min-width: 500px;
+  max-width: 700px;
+
+  padding: 40px;
+  border: 1px solid #f3b6d2;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.case-text li {
+  font-size: 20px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
 
